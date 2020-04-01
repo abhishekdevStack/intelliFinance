@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/intelliFinance/static/css/main.304c2e2d.chunk.css",
+    "main.js": "/intelliFinance/static/js/main.d86bc124.chunk.js",
+    "main.js.map": "/intelliFinance/static/js/main.d86bc124.chunk.js.map",
+    "runtime-main.js": "/intelliFinance/static/js/runtime-main.136374e6.js",
+    "runtime-main.js.map": "/intelliFinance/static/js/runtime-main.136374e6.js.map",
+    "static/js/2.72fe0fd4.chunk.js": "/intelliFinance/static/js/2.72fe0fd4.chunk.js",
+    "static/js/2.72fe0fd4.chunk.js.map": "/intelliFinance/static/js/2.72fe0fd4.chunk.js.map",
+    "index.html": "/intelliFinance/index.html",
+    "precache-manifest.b16c93c4d58028fec7c007e3f8cd42f2.js": "/intelliFinance/precache-manifest.b16c93c4d58028fec7c007e3f8cd42f2.js",
+    "service-worker.js": "/intelliFinance/service-worker.js",
+    "static/css/main.304c2e2d.chunk.css.map": "/intelliFinance/static/css/main.304c2e2d.chunk.css.map",
+    "static/js/2.72fe0fd4.chunk.js.LICENSE.txt": "/intelliFinance/static/js/2.72fe0fd4.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.136374e6.js",
+    "static/js/2.72fe0fd4.chunk.js",
+    "static/css/main.304c2e2d.chunk.css",
+    "static/js/main.d86bc124.chunk.js"
+  ]
+}
