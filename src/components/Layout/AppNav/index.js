@@ -22,6 +22,7 @@ import MenuItemWrapper from "./menuItemWrapper";
 import Tooltip from "@material-ui/core/Tooltip";
 import { Avatar } from "@material-ui/core";
 import styled from "styled-components";
+import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 const drawerWidth = 240;
 
 const SLAvatar = styled(Avatar)`
@@ -69,6 +70,9 @@ const useStyles = makeStyles(theme => ({
     flexShrink: 0,
     whiteSpace: "nowrap"
   },
+  paddTypo: {
+    padding: "0px 16px"
+  },
   drawerOpen: {
     width: drawerWidth,
     transition: theme.transitions.create("width", {
@@ -95,6 +99,11 @@ const useStyles = makeStyles(theme => ({
 
     // necessary for content to be below app bar
     ...theme.mixins.toolbar
+  },
+  menuToolbar: {
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between"
   },
   content: {
     flexGrow: 1,
@@ -166,96 +175,105 @@ export default function MiniDrawer() {
     setMenuList(menu);
   };
   return (
-    <div className={classes.root}>
-      <CssBaseline />
-      <AppBar
-        color="default"
-        position="fixed"
-        className={clsx(classes.appBar, {
-          [classes.appBarShift]: open
-        })}
-      >
-        <Toolbar>
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            className={clsx(classes.menuButton, {
-              [classes.hide]: open
-            })}
-          >
-            <MenuIcon className={classes.headerTitle} />
-          </IconButton>
-          <Typography variant="h4" noWrap className={classes.headerTitle}>
-            IntelliFinance
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <Drawer
-        variant="permanent"
-        className={clsx(classes.drawer, {
-          [classes.drawerOpen]: open,
-          [classes.drawerClose]: !open
-        })}
-        classes={{
-          paper: clsx({
+    <ClickAwayListener onClickAway={handleDrawerClose}>
+      <div className={classes.root}>
+        <CssBaseline />
+        <AppBar
+          color="default"
+          position="fixed"
+          className={clsx(classes.appBar, {
+            [classes.appBarShift]: open
+          })}
+        >
+          <Toolbar>
+            <IconButton
+              color="inherit"
+              aria-label="open drawer"
+              onClick={handleDrawerOpen}
+              edge="start"
+              className={clsx(classes.menuButton, {
+                [classes.hide]: open
+              })}
+            >
+              <MenuIcon className={classes.headerTitle} />
+            </IconButton>
+            <Typography variant="h4" noWrap className={classes.headerTitle}>
+              IntelliFinance
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <Drawer
+          variant="permanent"
+          className={clsx(classes.drawer, {
             [classes.drawerOpen]: open,
             [classes.drawerClose]: !open
-          })
-        }}
-      >
-        <div className={classes.toolbar}>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <ChevronRightIcon />
-            ) : (
-              <ChevronLeftIcon />
-            )}
-          </IconButton>
-        </div>
-        <Divider />
-        <List>
-          {menuList.map((text, index) => (
-            <MenuItemWrapper
-              islink={true}
-              to={text.route}
-              style={{ textDecoration: "none" }}
-              key={`link_${text.name}`}
-            >
-              <ListItem
-                button
-                key={text.name}
-                selected={text.selected}
-                onClick={() => changeSelectedMenu(text.name)}
+          })}
+          classes={{
+            paper: clsx({
+              [classes.drawerOpen]: open,
+              [classes.drawerClose]: !open
+            })
+          }}
+        >
+          <div className={classes.menuToolbar}>
+            <Typography variant="h6" className={classes.paddTypo}>
+              Hi, Welcome!
+            </Typography>
+            <IconButton onClick={handleDrawerClose}>
+              {theme.direction === "rtl" ? (
+                <div>
+                  <ChevronRightIcon />
+                </div>
+              ) : (
+                <div>
+                  <ChevronLeftIcon />
+                </div>
+              )}
+            </IconButton>
+          </div>
+          <Divider />
+          <List>
+            {menuList.map((text, index) => (
+              <MenuItemWrapper
+                islink={true}
+                to={text.route}
+                style={{ textDecoration: "none" }}
+                key={`link_${text.name}`}
               >
-                <Tooltip title={text.name} key={`tooltip_${text.name}`}>
-                  <SLAvatar>
-                    <SLListItemIcon>
-                      {getIconForMenuItem(text.icon)}
-                    </SLListItemIcon>{" "}
-                  </SLAvatar>
-                </Tooltip>
-                <ListItemText
-                  disableTypography
-                  primary={
-                    <Typography
-                      variant="h6"
-                      style={{ color: "black", marginLeft: 20 }}
-                    >
-                      {text.name}
-                    </Typography>
-                  }
-                />
-              </ListItem>
-            </MenuItemWrapper>
-          ))}
-        </List>
-        <Divider />
-      </Drawer>
-      <main className={classes.content}>
-        <div className={classes.toolbar}></div>
-      </main>
-    </div>
+                <ListItem
+                  button
+                  key={text.name}
+                  selected={text.selected}
+                  onClick={() => changeSelectedMenu(text.name)}
+                >
+                  <Tooltip title={text.name} key={`tooltip_${text.name}`}>
+                    <SLAvatar>
+                      <SLListItemIcon>
+                        {getIconForMenuItem(text.icon)}
+                      </SLListItemIcon>{" "}
+                    </SLAvatar>
+                  </Tooltip>
+                  <ListItemText
+                    disableTypography
+                    primary={
+                      <Typography
+                        variant="h6"
+                        style={{ color: "black", marginLeft: 20 }}
+                      >
+                        {text.name}
+                      </Typography>
+                    }
+                  />
+                </ListItem>
+              </MenuItemWrapper>
+            ))}
+          </List>
+          <Divider />
+        </Drawer>
+        <main className={classes.content}>
+          <div className={classes.toolbar}></div>
+        </main>
+      </div>
+    </ClickAwayListener>
   );
 }

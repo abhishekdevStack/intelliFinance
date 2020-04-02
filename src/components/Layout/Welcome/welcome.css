@@ -17,5 +17,6 @@
   margin: 0px 75px;
 }
 .subContent {
-  white-space: pre-wrap;
+  white-space: normal;
+  margin: 24px 24px;
 }

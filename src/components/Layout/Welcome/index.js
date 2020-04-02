@@ -29,7 +29,7 @@ class WelcomeSetup extends React.Component {
           </Grid>
           <Grid container className="extraPadding">
             {" "}
-            <Grid item xs={12} xl={12} lg={12} sm={12}>
+            <Grid item xs={10} xl={10} lg={10} sm={10}>
               <div className="subContent">
                 <Typography variant="h6">
                   I’m good at making forecasts I analyze thousands of trading

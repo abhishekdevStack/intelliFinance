@@ -6,6 +6,7 @@ import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import { Grid, Button, Paper, TextField } from "@material-ui/core";
+import MaxWidthDialog from "../Dialog";
 const useStyles = makeStyles(theme => ({
   root: {
     width: "auto",
@@ -28,11 +29,13 @@ const useStyles = makeStyles(theme => ({
 export default function ControlledExpansionPanels() {
   const classes = useStyles();
   const [expanded, setExpanded] = React.useState(false);
-
+  const [showDialog, setShowDialog] = React.useState(false);
   const handleChange = panel => (event, isExpanded) => {
     setExpanded(isExpanded ? panel : false);
   };
-
+  const closeDialog = () => {
+    setShowDialog(false);
+  };
   return (
     <div className={classes.root}>
       <ExpansionPanel
@@ -126,7 +129,7 @@ export default function ControlledExpansionPanels() {
               <Button
                 variant="contained"
                 color="primary"
-                // onClick={handleNext}
+                onClick={() => setShowDialog(true)}
                 className={classes.button}
               >
                 Refer
@@ -136,6 +139,14 @@ export default function ControlledExpansionPanels() {
           </Grid>
         </ExpansionPanelDetails>
       </ExpansionPanel>
+      {showDialog && (
+        <MaxWidthDialog
+          open={showDialog}
+          close={closeDialog}
+          data="You have successfully Refered your friend."
+          title="Notification"
+        />
+      )}
     </div>
   );
 }
