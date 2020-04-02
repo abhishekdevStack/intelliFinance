@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/intelliFinance/precache-manifest.d3ac2d0ff0d79e1cf8ad798d8b95ea7d.js"
+  "/intelliFinance/precache-manifest.2a0e31c61e852bcd2ee4cdb1e1e43405.js"
 );
 
 self.addEventListener('message', (event) => {
